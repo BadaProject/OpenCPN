@@ -1051,6 +1051,7 @@ MyApp::MyApp() {
 }
 
 bool MyApp::OnInit() {
+  // 1. wxApp::OnInit() 호출
   if (!wxApp::OnInit()) return false;
 #ifdef __OCPN__ANDROID__
   androidEnableBackButton(false);
@@ -1073,12 +1074,14 @@ bool MyApp::OnInit() {
 #endif
   m_checker = 0;
 
+  // 2. OCPNPlatform 인스턴스 생성
   // Instantiate the global OCPNPlatform class
   g_Platform = new OCPNPlatform;
   g_BasePlatform = g_Platform;
 
 #ifndef __OCPN__ANDROID__
   //  On Windows
+  // 3. 하나의 app만 생성되도록 처리
   //  We allow only one instance unless the portable option is used
   if (!g_bportable && wxDirExists(g_Platform->GetPrivateDataDir())) {
     wxChar separator = wxFileName::GetPathSeparator();
@@ -1145,6 +1148,7 @@ bool MyApp::OnInit() {
   }
 #endif
 
+  // 4. Platform 초기화
   //  Perform first stage initialization
   OCPNPlatform::Initialize_1();
 
