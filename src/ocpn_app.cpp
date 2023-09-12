@@ -1191,6 +1191,7 @@ bool MyApp::OnInit() {
                    wxFONTENCODING_SYSTEM);
   temp_font.SetDefaultEncoding(wxFONTENCODING_SYSTEM);
 
+  // Log 파일 위치 설정
   //      Establish Log File location
   if (!g_Platform->InitializeLogFile()) return false;
 
@@ -1336,6 +1337,7 @@ bool MyApp::OnInit() {
   }
 
 
+  // Layer 목록, Route 목록
   //      Initialize some lists
   //    Layers
   pLayerList = new LayerList;
@@ -1713,6 +1715,7 @@ bool MyApp::OnInit() {
   //  Do those platform specific initialization things that need gFrame
   g_Platform->Initialize_3();
 
+  // Plugin Manager 초기화
   //  Initialize the Plugin Manager
   g_pi_manager = new PlugInManager(gFrame);
 
