@@ -1566,6 +1566,7 @@ bool MyApp::OnInit() {
 #endif
   }
 
+  // 지도 관련 설정 : GSHHS 데이터
   //      Establish the GSHHS Dataset location
   gDefaultWorldMapLocation = "gshhs";
   gDefaultWorldMapLocation.Prepend(g_Platform->GetSharedDataDir());
@@ -1588,6 +1589,7 @@ bool MyApp::OnInit() {
     TideCurrentDataSet.push_back(g_Platform->NormalizePath(default_tcdata1).ToStdString());
   }
 
+  // AIS 알람 소리 파일
   //  Check the global AIS alarm sound file
   //  If empty, preset default
   if (g_sAIS_Alert_Sound_File.IsEmpty()) {
@@ -1709,6 +1711,7 @@ bool MyApp::OnInit() {
               new_frame_size.x, new_frame_size.y, position.x, position.y);
   wxLogMessage(fmsg);
 
+  // gFrame은 global Frame으로 일종의 root frame인가?
   gFrame = new MyFrame(NULL, myframe_window_title, position, new_frame_size,
                        app_style);  // Gunther
 
@@ -1774,6 +1777,7 @@ bool MyApp::OnInit() {
   //  Yield to pick up the OnSize() calls that result from Maximize()
   Yield();
 
+  // chart 배열
   //   Build the initial chart dir array
   ArrayOfCDI ChartDirArray;
   pConfig->LoadChartDirArray(ChartDirArray);
